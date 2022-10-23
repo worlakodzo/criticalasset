@@ -1,4 +1,4 @@
-## Asset Management System By Clement
+## Asset Management System
 
 ### Setting up the app
 ### Install Dependencies
