@@ -120,7 +120,7 @@ const addAsset = (event) =>{
     const note = document.querySelector("#note").value;
     const defaultLocation = document.querySelector("#default_location").value;
     const uploadAssetImage = document.querySelector("#upload_asset_image").files[0];
-    
+
 
     const form = new FormData()
     form.append("company", company)
@@ -159,20 +159,19 @@ const addAsset = (event) =>{
             // response.status code is 
             // not 201
 
+            // display error message
+            console.log(dataJson);
+            document.querySelector("#error-message-container").style.display = "block";
+            document.querySelector("#error-message").innerHTML = "Sorry error occur while create asset";
+
+            // remove progress 
+            const btnSubmit = document.querySelector("#btn-submit-form");
+            btnSubmit.innerHTML = "Submit";
+            btnSubmit.disabled = false;
+
             response.json();
 
         }
-
-
-    }).then(dataJson =>{
-        // display error message
-        document.querySelector("#error-message-container").style.display = "block";
-        document.querySelector("#error-message").innerHTML = dataJson.message;
-
-        // remove progress 
-        const btnSubmit = document.querySelector("#btn-submit-form");
-        btnSubmit.innerHTML = "Submit";
-        btnSubmit.disabled = false;
 
 
     }).catch(err => {
@@ -294,20 +293,18 @@ const updateAsset = (event) =>{
             // response.status code is 
             // not 200
 
+            // display error message
+            document.querySelector("#error-message-container").style.display = "block";
+            document.querySelector("#error-message").innerHTML =  "Sorry error occur while create asset";
+
+            // remove progress 
+            const btnSubmit = document.querySelector("#btn-submit-form");
+            btnSubmit.innerHTML = "Submit";
+            btnSubmit.disabled = false;
+
             response.json();
 
         }
-
-
-    }).then(dataJson =>{
-        // display error message
-        document.querySelector("#error-message-container").style.display = "block";
-        document.querySelector("#error-message").innerHTML = dataJson.message;
-
-        // remove progress 
-        const btnSubmit = document.querySelector("#btn-submit-form");
-        btnSubmit.innerHTML = "Submit";
-        btnSubmit.disabled = false;
 
 
     }).catch(err => {
