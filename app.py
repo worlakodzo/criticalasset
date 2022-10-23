@@ -387,22 +387,21 @@ def asset_add():
     try:
 
         if request.method == "GET":
-            return render_template(
-                "asset_add.html",
-                status_list= STATUS_LIST,
-                supplier_list=SUPPLIER_LIST,
-                company_list=COMPANY_LIST
-                )
+            return render_template("asset_add.html", status_list= STATUS_LIST)
 
 
         # get data submited from 
         # the frontend as dictionary object
         body = request.form
+        photo = ""
+        actual_photo_name = ""
+        file_data = {}
 
         # save image
         default_image = "blank-img.jpg"
-        file = request.files['upload_asset_image']
-        file_data = upload_img(file)
+        if "upload_asset_image" in request.files:
+            file = request.files['upload_asset_image']
+            file_data = upload_img(file)
 
         # set default image
         # if image if not uploaded
@@ -413,7 +412,7 @@ def asset_add():
             photo= default_image
             actual_photo_name = default_image
 
-
+        print("working")
         # Create new asset object
         asset = Asset(
             company= body["company"],
@@ -463,10 +462,7 @@ def asset_edit(asset_id):
             return render_template(
                 "asset_edit.html",
                 asset_id=asset_id,
-                status_list= STATUS_LIST,
-                supplier_list=SUPPLIER_LIST,
-                company_list=COMPANY_LIST
-                )
+                status_list= STATUS_LIST)
 
 
         # get data submited from 
