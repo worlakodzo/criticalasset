@@ -231,8 +231,8 @@ class Asset(db.Model):
         purchase_cost,
         warranty,
         default_location,
-        photo = " ",
-        actual_photo_name = " ",
+        photo = "blank-img.jpg",
+        actual_photo_name = "blank-img.jpg",
         note = " ",
         ):
 

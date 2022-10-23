@@ -1,3 +1,4 @@
+from email.policy import default
 from functools import wraps
 import os
 import sys
@@ -396,8 +397,19 @@ def asset_add():
         body = request.form
 
         # save image
+        default_image = "blank-img.jpg"
         file = request.files['upload_asset_image']
         file_data = upload_img(file)
+
+        # set default image
+        # if image if not uploaded
+        if file_data:
+            photo= file_data['filename']
+            actual_photo_name = file_data['actual_filename']
+        else:
+            photo= default_image
+            actual_photo_name = default_image
+
 
         # Create new asset object
         asset = Asset(
@@ -414,8 +426,8 @@ def asset_add():
             warranty= body["warranty"],
             note= body["note"],
             default_location= body["default_location"],
-            photo= file_data['filename'],
-            actual_photo_name = file_data['actual_filename']
+            photo= photo,
+            actual_photo_name = actual_photo_name
             )
 
         # insert the new asset
