@@ -87,7 +87,10 @@ def upload_img(file):
 
     except Exception as e:
         print(str(e))
-        return {}
+        return {
+                "filename": "blank-img.jpg",
+                "actual_filename": "blank-img.jpg",
+            }
 
     else:
         return {

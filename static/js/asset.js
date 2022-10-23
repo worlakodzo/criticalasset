@@ -120,8 +120,7 @@ const addAsset = (event) =>{
     const note = document.querySelector("#note").value;
     const defaultLocation = document.querySelector("#default_location").value;
     const uploadAssetImage = document.querySelector("#upload_asset_image").files[0];
-
-    console.log(purchaseDate)
+    
 
     const form = new FormData()
     form.append("company", company)
