@@ -1,0 +1,321 @@
+{% extends "content_base.html" %}
+{% block title %} Add License | ASSETMGMT {% endblock %}
+{% block main_content %}
+
+<!-- ============================================================== -->
+<!-- Start right Content here -->
+<!-- ============================================================== -->
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0">ADD LICENSE</h4>
+
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Add License</li>
+                            </ol>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="row parent">
+                <div class="col-lg-12">
+                    <div class="card ">
+                        <!-- start error -->
+                        <div id="error-message-container" style="display: none;" class="row">
+                            <div class="col-12">
+                                <p id="error-message"></p>
+                            </div>
+                        </div>
+                        <!-- end error -->
+
+                        <div class="card-body">
+
+                            <div id="addproduct-nav-pills-wizard" class="twitter-bs-wizard">
+                                <ul class="twitter-bs-wizard-nav">
+                                    <li class="nav-item">
+                                        <a href="#basic-info" class="nav-link" data-bs-toggle="tab">
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- end ul -->
+                                <div class="tab-content twitter-bs-wizard-tab-content">
+                                    <div class="tab-pane" id="basic-info">
+
+                                        <form id="add-license-form">
+
+
+                                            <div class="row create">
+                                                <div class="col-lg-3">
+                                                    <div class="mb-12">
+                                                        <label class="form-label" for="software_name">License/Software Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="mb-12">
+                                                        <input id="software_name" required name="software_name" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row create">
+                                                <div class="col-lg-3">
+                                                    <div class="mb-12">
+                                                        <label class="form-label" for="category_name">Category Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="mb-12">
+                                                        <select id="category_name" required name="category_name" class="form-control">
+                                                            <option disabled selected>--select category--</option>
+                                                            {% for category in category_list %}
+                                                                <option value="{{category.name}}">{{category.name}}</option>
+                                                            {%endfor%}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                    
+                                            <div class="row create">
+                                                <div class="col-lg-3">
+                                                    <div class="mb-12">
+                                                        <label class="form-label" for="product_key">Product Key</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="mb-12">
+                                                        <textarea rows="2" id="product_key" name="product_key" class="form-control"></textarea>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row create">
+                                                <div class="col-lg-3">
+                                                    <div class="mb-12">
+                                                        <label class="form-label" for="seats">Seats</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="mb-12">
+                                                        <input id="seats" required name="seats" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row create">
+                                                <div class="col-lg-3">
+                                                    <div class="mb-12">
+                                                        <label class="form-label" for="company">Company</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="mb-12">
+                                                        <select id="company" required name="company" class="form-control">
+                                                            <option disabled selected>--select company--</option>
+                                                            {% for company in company_list %}
+                                                                <option value="{{company.name}}">{{company.name}}</option>
+                                                            {%endfor%}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row create">
+                                                <div class="col-lg-3">
+                                                    <div class="mb-12">
+                                                        <label class="form-label" for="manufacturer">Manufacturer</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="mb-12">
+                                                        <select id="manufacturer" name="manufacturer" class="form-control">
+                                                            <option disabled selected>--select manufacturer--</option>
+                                                            {% for manufacturer in manufacturer_list %}
+                                                                <option value="{{manufacturer.name}}">{{manufacturer.name}}</option>
+                                                            {%endfor%}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row create">
+                                                <div class="col-lg-3">
+                                                    <div class="mb-12">
+                                                        <label class="form-label" for="license_to_name">Licensed to Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="mb-12">
+                                                        <input id="license_to_name"  name="license_to_name" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row create">
+                                                <div class="col-lg-3">
+                                                    <div class="mb-12">
+                                                        <label class="form-label"  for="license_to_email">Licensed to Email</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="mb-12">
+                                                        <input id="license_to_email"  name="license_to_email" type="email" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row create">
+                                                <div class="col-lg-3">
+                                                    <div class="mb-12">
+                                                        <label class="form-label" for="supplier">Supplier</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="mb-12">
+                                                        <select id="supplier" required name="supplier"  class="form-control">
+                                                            <option disabled selected>--select supplier--</option>
+                                                            {% for supplier in supplier_list %}
+                                                                <option value="{{supplier.name}}">{{supplier.name}}</option>
+                                                            {%endfor%}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row create">
+                                                <div class="col-lg-3">
+                                                    <div class="mb-12">
+                                                        <label class="form-label" for="order_number">Order Number</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="mb-12">
+                                                        <input id="order_number" required name="order_number" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row create">
+                                                <div class="col-lg-3">
+                                                    <div class="mb-12">
+                                                        <label class="form-label" for="purchase_cost">Purchase Cost</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="mb-12">
+                                                        <input id="purchase_cost" required name="purchase_cost" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row create">
+                                                <div class="col-lg-3">
+                                                    <div class="mb-12">
+                                                        <label class="form-label" for="purchase_date">Purchase Date</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="mb-12">
+                                                        <input id="purchase_date" required name="purchase_date" type="date" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                
+                                            <div class="row create">
+                                                <div class="col-lg-3">
+                                                    <div class="mb-12">
+                                                        <label class="form-label" for="expiration_date">Expiration Date</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="mb-12">
+                                                        <input id="expiration_date" required name="expiration_date" type="date" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row create">
+                                                <div class="col-lg-3">
+                                                    <div class="mb-12">
+                                                        <label class="form-label" for="termination_date">Termination Date</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="mb-12">
+                                                        <input id="termination_date" required name="termination_date" type="date" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="row create">
+                                                <div class="col-lg-3">
+                                                    <div class="mb-12">
+                                                        <label class="form-label" required for="purchase_order_number">Purchase Order Number</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="mb-12">
+                                                        <input id="purchase_order_number" required name="purchase_order_number" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row create">
+                                                <div class="col-lg-3">
+                                                    <div class="mb-12">
+                                                        <label class="form-label" for="note">Note</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="mb-12">
+                                                        <textarea rows="2" id="note" name="note" class="form-control"></textarea>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- end row -->
+
+                                            <div style="margin-top:30px;" class="col-md-12">
+                                                <button id="btn-submit-form" type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+
+
+                                        </form>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+
+</div>
+
+{% endblock %}
+{% block js %} <script src="/static/js/license.js"></script> {% endblock %}
