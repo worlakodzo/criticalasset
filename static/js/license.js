@@ -107,6 +107,7 @@ const addLicense = (event) =>{
     const terminationDate = document.querySelector("#termination_date").value;
     const purchaseOrderNumber = document.querySelector("#purchase_order_number").value;
     const note = document.querySelector("#note").value;
+    const default_location = document.querySelector("#default_location").value;
 
     const form = new FormData()
     form.append("software_name", softwareName)
@@ -125,6 +126,7 @@ const addLicense = (event) =>{
     form.append("termination_date", terminationDate)
     form.append("note", note)
     form.append("purchase_order_number", purchaseOrderNumber)
+    form.append("default_location", default_location)
 
     // send submited
     // data to server
@@ -207,6 +209,7 @@ const loadLicenseData = (licenseId) =>{
         document.querySelector("#termination_date").value =license.termination_date;
         document.querySelector("#note").value =license.note;
         document.querySelector("#purchase_order_number").value =license.purchase_order_number;
+        document.querySelector("#default_location").value =license.default_location;
         console.log(jsonData);
 
     }).catch(err =>{
@@ -246,6 +249,7 @@ const updateLicense = (event) =>{
     const terminationDate = document.querySelector("#termination_date").value;
     const purchaseOrderNumber = document.querySelector("#purchase_order_number").value;
     const note = document.querySelector("#note").value;
+    const default_location = document.querySelector("#default_location").value;
 
     const form = new FormData()
     form.append("software_name", softwareName)
@@ -264,6 +268,7 @@ const updateLicense = (event) =>{
     form.append("termination_date", terminationDate)
     form.append("note", note)
     form.append("purchase_order_number", purchaseOrderNumber)
+    form.append("default_location", default_location)
 
     // send submited
     // data to server

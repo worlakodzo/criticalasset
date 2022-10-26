@@ -215,6 +215,7 @@ class Asset(db.Model):
     default_location = Column(String, nullable= False)
     photo = Column(String(255), nullable= True, default="")
     actual_photo_name = Column(String(255), nullable= True, default= " ")
+    is_on_repair = Column(Boolean, default=False)
 
     # Constructor
     def __init__(
@@ -338,6 +339,7 @@ class License(db.Model):
         termination_date,
         purchase_order_number,
         maintained,
+        default_location,
         note
         ):
 
@@ -359,6 +361,7 @@ class License(db.Model):
         self.purchase_order_number = purchase_order_number
         self.maintained = maintained
         self.note = note
+        self.default_location = default_location
 
 
     def insert(self):
@@ -397,9 +400,10 @@ class License(db.Model):
             "purchase_cost": self.purchase_cost,
             "purchase_date": self.purchase_date.isoformat(),
             "expiration_date": self.expiration_date.isoformat(),
-            "termination_date": self.termination_date.isoformat(),
+            "termination_date": self.termination_date.isoformat() if self.termination_date else "",
             "purchase_order_number": self.purchase_order_number,
             "maintained": self.maintained,
+            "default_location": self.default_location,
             "note": self.note
         }
 
